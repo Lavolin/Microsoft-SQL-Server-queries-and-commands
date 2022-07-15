@@ -30,7 +30,7 @@ ORDER BY Salary DESC
 -- ORDER BY Salary ASC
 
 
-CREATE VIEW v_EmployeeSalary AS -- създава вю
+CREATE VIEW v_EmployeeSalary AS -- създаване на вю
 SELECT
 	FirstName,
 	LastName,
@@ -62,3 +62,17 @@ SELECT
 	,GETDATE()
 FROM Departments
 
+DELETE FROM Towns
+WHERE TownId > 32
+
+
+UPDATE v_Employees
+	SET 
+		FirstName = 'Petar',
+		LastName = 'Petrov'
+	WHERE EmployeeId = 1
+
+
+UPDATE Projects
+	SET EndDate = GETDATE()
+	WHERE EndDate = NULL

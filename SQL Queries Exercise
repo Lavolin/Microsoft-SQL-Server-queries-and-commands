@@ -1,7 +1,22 @@
+CREATE TABLE [People](
+	[Id] INT PRIMARY KEY IDENTITY,
+	[Name] NVARCHAR(200) NOT NULL, 
+	[Picture] VARBINARY(MAX),
+	CHECK (DATALENGTH([Picture]) <= 2000000),
+	[Height] DECIMAL(3,2),
+	[Weight] DECIMAL(3,2),
+	[Gender] CHAR(1) NOT NULL,
+	CHECK ([Gender] = 'm' OR [Gender] = 'f'),
+	[Birthdate] DATETIME2 NOT NULL,
+	[Biography] NVARCHAR(MAX)
+)
+
 
 SELECT 
 	CONCAT(FirstName, ' ',LastName) AS [FullName]
 	,JobTitle
 	,FORMAT(Salary, '0.00') AS Salary
-FROM Employee	
+FROM Employee
+
+
 

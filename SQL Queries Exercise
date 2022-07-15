@@ -15,8 +15,12 @@ CREATE TABLE [People](
 SELECT 
 	CONCAT(FirstName, ' ',LastName) AS [FullName]
 	,JobTitle
-	,FORMAT(Salary, '0.00') AS Salary
+	,FORMAT(Salary, N'0.00 лв.') AS Salary
 FROM Employee
 
 
+SELECT DISTINCT
+	CONCAT(FirstName, ' ',LastName) AS FullName
+FROM Employee
+WHERE DepartmentId = 7
 

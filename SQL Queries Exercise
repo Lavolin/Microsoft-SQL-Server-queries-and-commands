@@ -4,7 +4,7 @@ CREATE TABLE [People](
 	[Picture] VARBINARY(MAX),
 	CHECK (DATALENGTH([Picture]) <= 2000000),
 	[Height] DECIMAL(3,2),
-	[Weight] DECIMAL(3,2),
+	[Weight] DECIMAL(5,2),
 	[Gender] CHAR(1) NOT NULL,
 	CHECK ([Gender] = 'm' OR [Gender] = 'f'),
 	[Birthdate] DATETIME2 NOT NULL,
@@ -23,4 +23,42 @@ SELECT DISTINCT
 	CONCAT(FirstName, ' ',LastName) AS FullName
 FROM Employee
 WHERE DepartmentId = 7
+
+SELECT *
+FROM Employee
+ORDER BY Salary DESC
+-- ORDER BY Salary ASC
+
+
+CREATE VIEW v_EmployeeSalary AS -- създава вю
+SELECT
+	FirstName,
+	LastName,
+	Salary
+FROM Employee
+
+
+SELECT *
+FROM v_EmployeeSalary
+WHERE Salary > 10000
+ORDER BY FirstName, LastName
+
+
+CREATE VIEW v_HighestPeak AS
+SELECT TOP(1) *
+FROM Peaks
+ORDER BY Elevation DESC
+
+
+INSERT INTO Towns ([Name]) 
+VALUES ('Paris')
+	,('Sofia');
+
+
+INSERT INTO Projects
+([Name], StartDate)
+SELECT 
+	CONCAT('Department', [Name])
+	,GETDATE()
+FROM Departments
 
